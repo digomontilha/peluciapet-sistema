@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produto - PelúciaPet Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Satisfy:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #FDF6ED 0%, #F5F5F5 100%);
+            min-height: 100vh;
+            color: #5C2C0D;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #5C2C0D 0%, #A0522D 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+
+        .logo i {
+            color: #D4A04C;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #5C2C0D;
+        }
+
+        .page-subtitle {
+            color: #A0522D;
+            font-size: 1.1rem;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #EBC6A8;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #5C2C0D;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #EBC6A8;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #5C2C0D;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-label.required::after {
+            content: ' *';
+            color: #dc3545;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #EBC6A8;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: #FDF6ED;
+            color: #5C2C0D;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #D4A04C;
+            box-shadow: 0 0 0 3px rgba(212, 160, 76, 0.2);
+            background: white;
+        }
+
+        .form-control::placeholder {
+            color: #A0522D;
+            opacity: 0.7;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        /* Checkbox and Radio */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            transform: scale(1.2);
+            accent-color: #D4A04C;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        /* Variations Section */
+        .variations-container {
+            border: 2px dashed #EBC6A8;
+            border-radius: 10px;
+            padding: 1.5rem;
+            background: #FDF6ED;
+        }
+
+        .variation-item {
+            background: white;
+            border: 1px solid #EBC6A8;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .variation-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .variation-title {
+            font-weight: 600;
+            color: #5C2C0D;
+        }
+
+        .remove-variation {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .add-variation {
+            background: linear-gradient(45deg, #D4A04C, #EBC6A8);
+            color: #5C2C0D;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .add-variation:hover {
+            background: linear-gradient(45deg, #C19A3E, #DDB896);
+            transform: translateY(-2px);
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #EBC6A8;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #5C2C0D, #A0522D);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #4A2309, #8B4513);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(92, 44, 13, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Loading States */
+        .loading {
+            display: none;
+            margin-left: 0.5rem;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-paw"></i>PelúciaPet Admin
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="#" class="nav-link" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header fade-in">
+            <div class="page-title">Cadastro de Produto</div>
+            <div class="page-subtitle">Adicione um novo produto ao catálogo da PelúciaPet</div>
+        </div>
+
+        <div class="alert alert-success" id="successAlert">
+            <i class="fas fa-check-circle"></i>
+            <span id="successMessage"></span>
+        </div>
+
+        <div class="alert alert-error" id="errorAlert">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorMessage"></span>
+        </div>
+
+        <form class="form-container fade-in" id="productForm">
+            <!-- Informações Básicas -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    Informações Básicas
+                </h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome" class="form-label required">Nome do Produto</label>
+                        <input type="text" id="nome" name="nome" class="form-control" 
+                               placeholder="Ex: Caminha Redonda Pelúcia Rosa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria_id" class="form-label required">Categoria</label>
+                        <select id="categoria_id" name="categoria_id" class="form-control" required>
+                            <option value="">Carregando categorias...</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="descricao" class="form-label required">Descrição</label>
+                        <textarea id="descricao" name="descricao" class="form-control" 
+                                  placeholder="Descreva detalhadamente o produto, seus benefícios e características..." required></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preços -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <i class="fas fa-dollar-sign"></i>
+                    Preços
+                </h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="preco_base" class="form-label required">Preço Base (R$)</label>
+                        <input type="number" id="preco_base" name="preco_base" class="form-control" 
+                               step="0.01" min="0" placeholder="89.90" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="preco_promocional" class="form-label">Preço Promocional (R$)</label>
+                        <input type="number" id="preco_promocional" name="preco_promocional" class="form-control" 
+                               step="0.01" min="0" placeholder="79.90">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Especificações -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <i class="fas fa-ruler"></i>
+                    Especificações
+                </h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="material" class="form-label">Material</label>
+                        <input type="text" id="material" name="material" class="form-control" 
+                               placeholder="Ex: Pelúcia e Algodão">
+                    </div>
+                    <div class="form-group">
+                        <label for="peso" class="form-label">Peso</label>
+                        <input type="text" id="peso" name="peso" class="form-control" 
+                               placeholder="Ex: 800g">
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensoes" class="form-label">Dimensões</label>
+                        <input type="text" id="dimensoes" name="dimensoes" class="form-control" 
+                               placeholder="Ex: Variável conforme tamanho">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="cuidados" class="form-label">Cuidados e Instruções</label>
+                        <textarea id="cuidados" name="cuidados" class="form-control" 
+                                  placeholder="Ex: Lavar à máquina em água fria, secar à sombra"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variações -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <i class="fas fa-palette"></i>
+                    Variações (Tamanhos e Cores)
+                </h3>
+                <div class="variations-container">
+                    <div id="variationsContainer">
+                        <!-- Variações serão adicionadas dinamicamente -->
+                    </div>
+                    <button type="button" class="add-variation" onclick="addVariation()">
+                        <i class="fas fa-plus"></i>
+                        Adicionar Variação
+                    </button>
+                </div>
+            </div>
+
+            <!-- SEO e Configurações -->
+            <div class="form-section">
+                <h3 class="section-title">
+                    <i class="fas fa-search"></i>
+                    SEO e Configurações
+                </h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="meta_title" class="form-label">Título SEO</label>
+                        <input type="text" id="meta_title" name="meta_title" class="form-control" 
+                               placeholder="Será gerado automaticamente se não preenchido">
+                    </div>
+                    <div class="form-group">
+                        <label for="meta_description" class="form-label">Descrição SEO</label>
+                        <textarea id="meta_description" name="meta_description" class="form-control" 
+                                  placeholder="Será gerada automaticamente se não preenchida"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="destaque" name="destaque">
+                            <label for="destaque">Produto em destaque</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="ativo" name="ativo" checked>
+                            <label for="ativo">Produto ativo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="form-actions">
+                <a href="index.html" class="btn btn-secondary">
+                    <i class="fas fa-times"></i>
+                    Cancelar
+                </a>
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <i class="fas fa-save"></i>
+                    Salvar Produto
+                    <div class="loading" id="submitLoading">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // Configurações da API
+        const API_BASE = '../api/produtos.php';
+        const AUTH_API = '../api/auth.php';
+
+        // Estado da aplicação
+        let categorias = [];
+        let tamanhos = [];
+        let cores = [];
+        let variationCounter = 0;
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkAuthentication();
+            await loadFormData();
+            setupForm();
+        });
+
+        // Verificar autenticação
+        async function checkAuthentication() {
+            try {
+                const response = await fetch(`${AUTH_API}?action=check`);
+                const data = await response.json();
+
+                if (!data.authenticated) {
+                    window.location.href = '../auth/login.php';
+                    return;
+                }
+
+                // Verificar permissão para criar produtos
+                if (!hasPermission(data.user.role, 'create_products')) {
+                    showError('Você não tem permissão para criar produtos');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error('Erro ao verificar autenticação:', error);
+                window.location.href = '../auth/login.php';
+            }
+        }
+
+        // Verificar permissões
+        function hasPermission(role, permission) {
+            const permissions = {
+                'admin': ['create_products', 'edit_products', 'delete_products', 'view_products'],
+                'manager': ['create_products', 'edit_products', 'view_products'],
+                'editor': ['create_products', 'edit_products', 'view_products'],
+                'viewer': ['view_products']
+            };
+
+            return permissions[role]?.includes(permission) || false;
+        }
+
+        // Carregar dados do formulário
+        async function loadFormData() {
+            try {
+                // Carregar categorias
+                const categoriasResponse = await fetch(`${API_BASE}?action=categorias`);
+                const categoriasData = await categoriasResponse.json();
+                
+                if (categoriasData.success) {
+                    categorias = categoriasData.categorias;
+                    populateCategorias();
+                }
+
+                // Carregar tamanhos
+                const tamanhosResponse = await fetch(`${API_BASE}?action=tamanhos`);
+                const tamanhosData = await tamanhosResponse.json();
+                
+                if (tamanhosData.success) {
+                    tamanhos = tamanhosData.tamanhos;
+                }
+
+                // Carregar cores
+                const coresResponse = await fetch(`${API_BASE}?action=cores`);
+                const coresData = await coresResponse.json();
+                
+                if (coresData.success) {
+                    cores = coresData.cores;
+                }
+
+                // Adicionar primeira variação
+                addVariation();
+
+            } catch (error) {
+                console.error('Erro ao carregar dados do formulário:', error);
+                showError('Erro ao carregar dados do formulário');
+            }
+        }
+
+        // Popular select de categorias
+        function populateCategorias() {
+            const select = document.getElementById('categoria_id');
+            select.innerHTML = '<option value="">Selecione uma categoria</option>';
+            
+            categorias.forEach(categoria => {
+                const option = document.createElement('option');
+                option.value = categoria.id;
+                option.textContent = categoria.nome;
+                select.appendChild(option);
+            });
+        }
+
+        // Configurar formulário
+        function setupForm() {
+            const form = document.getElementById('productForm');
+            form.addEventListener('submit', handleSubmit);
+
+            // Auto-gerar slug e meta dados
+            const nomeInput = document.getElementById('nome');
+            nomeInput.addEventListener('input', () => {
+                const nome = nomeInput.value;
+                if (nome && !document.getElementById('meta_title').value) {
+                    document.getElementById('meta_title').value = `${nome} - PelúciaPet`;
+                }
+            });
+
+            const descricaoInput = document.getElementById('descricao');
+            descricaoInput.addEventListener('input', () => {
+                const descricao = descricaoInput.value;
+                if (descricao && !document.getElementById('meta_description').value) {
+                    const metaDesc = descricao.substring(0, 160);
+                    document.getElementById('meta_description').value = metaDesc;
+                }
+            });
+        }
+
+        // Adicionar variação
+        function addVariation() {
+            variationCounter++;
+            const container = document.getElementById('variationsContainer');
+            
+            const variationDiv = document.createElement('div');
+            variationDiv.className = 'variation-item';
+            variationDiv.id = `variation-${variationCounter}`;
+            
+            variationDiv.innerHTML = `
+                <div class="variation-header">
+                    <div class="variation-title">Variação ${variationCounter}</div>
+                    <button type="button" class="remove-variation" onclick="removeVariation(${variationCounter})">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label required">Tamanho</label>
+                        <select name="variacoes[${variationCounter}][tamanho_id]" class="form-control" required>
+                            <option value="">Selecione um tamanho</option>
+                            ${getTamanhosOptions()}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label required">Cor</label>
+                        <select name="variacoes[${variationCounter}][cor_id]" class="form-control" required>
+                            <option value="">Selecione uma cor</option>
+                            ${getCoresOptions()}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Estoque Inicial</label>
+                        <input type="number" name="variacoes[${variationCounter}][estoque_atual]" 
+                               class="form-control" min="0" value="0" placeholder="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Estoque Mínimo</label>
+                        <input type="number" name="variacoes[${variationCounter}][estoque_minimo]" 
+                               class="form-control" min="1" value="1" placeholder="1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Preço Adicional (R$)</label>
+                        <input type="number" name="variacoes[${variationCounter}][preco_adicional]" 
+                               class="form-control" step="0.01" min="0" value="0" placeholder="0.00">
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(variationDiv);
+        }
+
+        // Remover variação
+        function removeVariation(id) {
+            const variation = document.getElementById(`variation-${id}`);
+            if (variation) {
+                variation.remove();
+            }
+        }
+
+        // Obter opções de tamanhos
+        function getTamanhosOptions() {
+            return tamanhos.map(tamanho => 
+                `<option value="${tamanho.id}">${tamanho.nome} - ${tamanho.dimensoes || tamanho.peso_recomendado}</option>`
+            ).join('');
+        }
+
+        // Obter opções de cores
+        function getCoresOptions() {
+            return cores.map(cor => 
+                `<option value="${cor.id}" style="background-color: ${cor.codigo_hex}; color: ${getContrastColor(cor.codigo_hex)};">${cor.nome}</option>`
+            ).join('');
+        }
+
+        // Obter cor de contraste
+        function getContrastColor(hexColor) {
+            const r = parseInt(hexColor.substr(1, 2), 16);
+            const g = parseInt(hexColor.substr(3, 2), 16);
+            const b = parseInt(hexColor.substr(5, 2), 16);
+            const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+            return brightness > 128 ? '#000000' : '#FFFFFF';
+        }
+
+        // Processar envio do formulário
+        async function handleSubmit(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('submitLoading');
+            
+            // Mostrar loading
+            submitBtn.disabled = true;
+            loading.style.display = 'inline-block';
+            
+            try {
+                // Coletar dados do formulário
+                const formData = new FormData(e.target);
+                const productData = {};
+                
+                // Dados básicos
+                for (let [key, value] of formData.entries()) {
+                    if (!key.startsWith('variacoes[')) {
+                        productData[key] = value;
+                    }
+                }
+                
+                // Processar variações
+                productData.variacoes = [];
+                const variationElements = document.querySelectorAll('.variation-item');
+                
+                variationElements.forEach(element => {
+                    const inputs = element.querySelectorAll('input, select');
+                    const variacao = {};
+                    
+                    inputs.forEach(input => {
+                        const name = input.name;
+                        if (name && name.includes('[')) {
+                            const field = name.split('[')[2].replace(']', '');
+                            variacao[field] = input.value;
+                        }
+                    });
+                    
+                    if (variacao.tamanho_id && variacao.cor_id) {
+                        productData.variacoes.push(variacao);
+                    }
+                });
+                
+                // Converter checkboxes
+                productData.destaque = document.getElementById('destaque').checked;
+                productData.ativo = document.getElementById('ativo').checked;
+                
+                // Enviar dados
+                const response = await fetch(`${API_BASE}?action=criar`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(productData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showSuccess(result.message);
+                    
+                    // Redirecionar após 2 segundos
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    showError(result.message || 'Erro ao salvar produto');
+                }
+                
+            } catch (error) {
+                console.error('Erro ao salvar produto:', error);
+                showError('Erro de conexão ao salvar produto');
+            } finally {
+                // Ocultar loading
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+
+        // Mostrar mensagem de sucesso
+        function showSuccess(message) {
+            const alert = document.getElementById('successAlert');
+            const messageElement = document.getElementById('successMessage');
+            
+            messageElement.textContent = message;
+            alert.style.display = 'block';
+            
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Auto-hide após 5 segundos
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+
+        // Mostrar mensagem de erro
+        function showError(message) {
+            const alert = document.getElementById('errorAlert');
+            const messageElement = document.getElementById('errorMessage');
+            
+            messageElement.textContent = message;
+            alert.style.display = 'block';
+            
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Auto-hide após 8 segundos
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 8000);
+        }
+
+        // Logout
+        async function logout() {
+            if (confirm('Tem certeza que deseja sair? Dados não salvos serão perdidos.')) {
+                try {
+                    await fetch(`${AUTH_API}?action=logout`, { method: 'POST' });
+                    window.location.href = '../auth/login.php';
+                } catch (error) {
+                    console.error('Erro no logout:', error);
+                    window.location.href = '../auth/login.php';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

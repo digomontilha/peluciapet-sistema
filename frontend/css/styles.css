@@ -1,0 +1,1342 @@
+/* Normalize CSS - Uma base limpa para todos os navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Fundamental para controle do layout */
+}
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    /* Cor de texto padrão, baseada na nova paleta */
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-beige);
+    /* Fundo geral claro, novo bege */
+}
+
+/* Variáveis de Cores - NOVA PALETA (Terrosa) */
+:root {
+    --dark-brown: #5C2C0D;
+    /* Marrom escuro (externo) */
+    --medium-brown: #A0522D;
+    /* Marrom médio (interno) */
+    --light-beige: #FDF6ED;
+    /* Bege claro (fundo e detalhes) */
+    --medium-beige: #EBC6A8;
+    /* Bege médio (gato) - Usado onde for mais adequado para um bege escuro de texto ou detalhe */
+    --soft-gold: #D4A04C;
+    /* Dourado suave (ramos) - Usado como cor principal/destaque */
+    --darkest-brown: #3B1F0F;
+    /* Marrom escuro (olhos e contornos) - Para textos muito escuros ou detalhes */
+
+    /* Mapeamento de variáveis antigas para novas, para facilitar a substituição */
+    --primary-color: var(--soft-gold);
+    /* Dourado suave será a cor primária */
+    --secondary-color: var(--medium-brown);
+    /* Marrom médio como secundário */
+    --white-color: #FFFFFF;
+    /* Branco ainda pode ser usado para textos em fundos escuros */
+    --light-gray: var(--light-beige);
+    /* O antigo light-gray agora é o light-beige */
+    --dark-gray: var(--dark-brown);
+    /* O antigo dark-gray agora é o dark-brown */
+    --text-color: var(--dark-brown);
+    /* Cor de texto geral */
+    --border-color: var(--medium-beige);
+    /* Uma cor de borda que combine */
+    --background-color: var(--light-beige);
+    /* Definindo background-color para products */
+}
+
+/* Estilos de Elementos Básicos */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    /* Padding lateral para evitar conteúdo colado nas bordas */
+}
+/* Benefits */
+.benefits {
+    background-color: var(--medium-beige); /* <-- Esta linha foi alterada */
+    padding: 3rem 0;
+    text-align: center;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para a seção de Benefícios e efeito 3D */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Padrão para desktop */
+    gap: 2rem;
+    perspective: 1000px;
+    /* Essencial para que as transformações 3D dos filhos funcionem */
+    transform-style: preserve-3d;
+    /* Garante que os filhos vivam no mesmo espaço 3D */
+}
+
+.benefit-item {
+    text-align: center;
+    background-color: var(--white-color);
+    /* Adiciona um fundo para visualização do efeito */
+    padding: 20px;
+    /* Espaçamento interno */
+    border-radius: 10px;
+    /* Bordas arredondadas */
+    border: 2px solid transparent;
+    /* Borda transparente por padrão */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra inicial */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    /* Transição suave */
+    will-change: transform;
+    /* Otimização para transformações */
+    backface-visibility: hidden;
+    /* Evita o "flip" da parte de trás do elemento ao girar */
+}
+
+.benefit-item:hover {
+    transform: scale(1.05) rotateY(10deg) rotateX(5deg) translateZ(20px);
+    /* Efeito 3D de rotação e profundidade */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 0 4px var(--soft-gold);
+    /* Sombra mais escura e borda de quadro */
+    border-color: var(--soft-gold);
+    /* Altera a cor da borda no hover */
+}
+
+.benefit-item i {
+    font-size: 2.5rem;
+    color: #D4A04C;
+    margin-bottom: 1rem;
+}
+
+.benefit-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-item p {
+    font-size: 0.9rem;
+    color: #A0522D;
+}
+
+/* Tipografia */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+    color: var(--dark-brown);
+    /* Títulos em marrom escuro */
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+/* Header */
+.header {
+    background-color: var(--medium-beige);
+    /* Alterado para marrom médio */
+    color: var(--dark-brown);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo h1 {
+    font-family: 'Satisfy', cursive;
+    /* Nova fonte para o logo */
+    font-size: 2.8em;
+    /* Aumentado para melhor visualização da fonte */
+    color: var(--dark-brown);
+    /* Logo em marrom escuro */
+    margin: 0;
+    line-height: 1;
+}
+
+.logo .tagline {
+    font-size: 0.9em;
+    color: var(--text-color);
+    display: block;
+    margin-top: 5px;
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav .nav-list li {
+    margin-left: 25px;
+}
+
+.main-nav .nav-list a {
+    text-decoration: none;
+    color: var(--dark-brown);
+    /* Links de navegação em marrom escuro */
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.main-nav .nav-list a:hover,
+.main-nav .nav-list a.active {
+    color: var(--soft-gold);
+    /* Hover e ativo em dourado suave */
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    /* Esconde em desktop */
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: var(--dark-brown);
+    cursor: pointer;
+}
+
+/* Hero Banner - Adaptado para o tema terroso */
+.hero-banner {
+    /* Diminuindo a opacidade do linear-gradient para 0.2 para clarear a imagem de fundo */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/banner.png') no-repeat left center/cover;
+    color: var(--white-color);
+    /* Texto branco no banner, mantém contraste */
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 40px;
+}
+
+.hero-content h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: var(--white-color);
+    /* Garante que o título seja branco */
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--white-color);
+    /* Garante que o parágrafo seja branco */
+}
+
+/* Botões (gerais) - Adaptado para o tema terroso */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--soft-gold);
+    /* Botão primário dourado suave */
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: #B2823A;
+    /* Um dourado um pouco mais escuro para hover */
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--light-beige);
+    /* Botão secundário com fundo bege claro */
+    color: var(--soft-gold);
+    /* Texto dourado suave e borda dourada suave */
+    border: 2px solid var(--soft-gold);
+}
+
+.btn-secondary:hover {
+    background-color: var(--medium-beige);
+    color: var(--dark-brown);
+    transform: translateY(-2px);
+}
+
+/* Section Title (títulos de seções) - Adaptado para o tema terroso */
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    color: var(--dark-brown);
+    /* Cor para os títulos de seção em marrom escuro */
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--soft-gold);
+    /* Linha dourada suave abaixo do título */
+    border-radius: 2px;
+}
+
+/* Products Grid - Correções de layout e cores adaptadas */
+.products {
+    padding: 60px 0;
+    background-color: var(--light-beige);
+    /* Fundo bege claro para a seção de produtos */
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.product-card {
+    background-color: var(--light-beige);
+    /* Fundo do card bege claro */
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* --- ESTILOS CONSOLIDADOS PARA IMAGENS DO PRODUTO (REESCRITO) --- */
+.product-image {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    /* Garante proporção 1:1 (quadrado) */
+    overflow: hidden;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.main-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.main-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    /* Todas as imagens são inicialmente invisíveis */
+    transition: opacity 0.5s ease;
+}
+
+.main-image-wrapper img.active-image {
+    opacity: 1;
+    /* Apenas a imagem com esta classe é visível */
+}
+
+/* Estilos para as miniaturas (thumbnails) */
+.image-thumbnails {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    z-index: 10;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-thumbnails .thumbnail {
+    width: 80px;
+    height: 80px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    border-radius: 8px;
+    /* Adicionado para bordas arredondadas nas miniaturas */
+}
+
+.image-thumbnails .thumbnail:hover {
+    border-color: var(--soft-gold);
+    transform: scale(1.05);
+}
+
+.image-thumbnails .thumbnail.active-thumbnail {
+    border: 2px solid var(--dark-brown);
+    box-shadow: 0 0 0 3px var(--soft-gold), 0 0 0 6px rgba(212, 160, 76, 0.5);
+    transform: scale(1.08);
+}
+
+/* --- FIM DOS ESTILOS CONSOLIDADOS PARA IMAGENS DO PRODUTO --- */
+
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--soft-gold);
+    color: var(--white-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex: 1;
+}
+
+.product-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4em;
+    color: var(--dark-brown);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 0.9em;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.product-price {
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    color: var(--soft-gold);
+}
+
+.product-price .price {
+    display: block;
+}
+
+.product-sizes,
+.product-colors {
+    margin-bottom: 15px;
+}
+
+.product-sizes span,
+.product-colors span {
+    font-weight: 600;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.size-options,
+.color-options {
+    display: inline-flex;
+    gap: 8px;
+    vertical-align: middle;
+    flex-wrap: wrap;
+}
+
+.btn-buy {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #25D366;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-top: auto;
+}
+
+/* Modificação dos botões de tamanho */
+.size-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90px; /* Largura aumentada para acomodar o texto completo, ajuste se necessário */
+    height: 60px; /* Altura aumentada para acomodar o texto completo, ajuste se necessário */
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--medium-brown); /* Borda alterada para uma cor mais escura para contraste */
+    font-size: 1.1rem; /* Tamanho do texto P, M, G */
+    font-weight: 700; /* Negrito P, M, G */
+    transition: all 0.3s ease;
+    position: relative;
+    color: var(--dark-brown);
+    background-color: var(--medium-beige); /* Cor de fundo alterada para os quadrados */
+    overflow: hidden; /* Garante que nada transborde */
+    text-align: center; /* Centraliza o texto dentro do botão */
+}
+
+.size-btn::after {
+    content: attr(data-dimension);
+    display: block;
+    font-size: 0.75rem;
+    color: var(--dark-brown); /* Cor do texto da dimensão alterada para melhor contraste */
+    margin-top: 5px; /* Espaço entre P/M/G e a dimensão */
+    white-space: normal; /* Permite que o texto quebre linha se necessário, embora aumentar largura/altura seja a solução primária */
+    line-height: 1.2; /* Ajusta a altura da linha para texto quebrado */
+}
+
+.size-btn:hover {
+    background-color: var(--soft-gold); /* Usando variável para consistência */
+    color: var(--white-color); /* Usando variável para consistência */
+    border-color: var(--soft-gold); /* Usando variável para consistência */
+}
+
+.size-btn.active, /* Regra para o estado ativo */
+.size-btn.selected { /* Mantendo 'selected' para compatibilidade */
+    background-color: var(--soft-gold);
+    border-color: var(--soft-gold);
+    color: var(--white-color);
+}
+
+.size-btn.active::after,
+.size-btn.selected::after { /* Estilo da dimensão no estado ativo */
+    color: var(--light-beige);
+}
+
+/* Nenhuma alteração necessária para color-btn, btn-buy ou estilos de tooltip com base na sua solicitação. */
+
+.color-btn {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.btn-buy:hover {
+    background-color: #1DA851;
+}
+
+.btn-buy .fab {
+    margin-right: 8px;
+}
+
+/* About Section - Adaptado para o tema terroso */
+.about-section {
+    background-color: var(--light-beige);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-content p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.about-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Page - Adaptado para o tema terroso */
+.contact-page-content {
+    padding: 60px 0;
+    background-color: var(--light-beige);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.contact-info-block,
+.contact-form-block {
+    background-color: var(--white-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info-block h3,
+.contact-form-block h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-brown);
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.contact-info-block p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.contact-info-block p .fas,
+.contact-info-block p .fab {
+    color: var(--soft-gold);
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.contact-info-block a {
+    color: var(--soft-gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-info-block a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--soft-gold);
+    font-size: 1.8em;
+    transition: transform 0.2s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--dark-brown);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    color: var(--dark-brown);
+    background-color: var(--light-beige);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--soft-gold);
+    box-shadow: 0 0 0 3px rgba(212, 160, 76, 0.2);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .btn-primary {
+    width: auto;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+/* Como Comprar Page - Adaptado para o tema terroso */
+.page-content {
+    padding: 60px 0;
+    background-color: var(--light-beige);
+}
+
+.content-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.content-block:nth-child(even) {
+    flex-direction: column-reverse;
+}
+
+.content-block h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    color: var(--dark-brown);
+    margin-bottom: 15px;
+}
+
+.content-block p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.content-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.final-message {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: var(--soft-gold);
+}
+
+.btn-whatsapp-large {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 15px 35px;
+    font-size: 1.3em;
+    background-color: #25D366;
+    color: white;
+}
+
+.btn-whatsapp-large:hover {
+    background-color: #1DA851;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-brown);
+    color: var(--white-color);
+    padding: 50px 0 20px;
+    font-size: 0.9em;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
+
+.footer-column:first-child {
+    /* Primeira coluna: Sobre a PelúciaPet */
+    text-align: center;
+    /* Centraliza o texto da primeira coluna */
+}
+
+.footer-column:not(:first-child) {
+    /* Outras colunas */
+    text-align: left;
+    /* Alinha à esquerda */
+}
+
+.footer-column h4,
+.footer-column h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--soft-gold);
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: var(--medium-beige);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    /* Garante que o link ocupe o espaço para alinhamento */
+}
+
+.footer-column ul li a:hover {
+    color: var(--soft-gold);
+}
+
+.footer-column p {
+    margin-bottom: 10px;
+    display: flex;
+    /* Mantém ícone e texto na mesma linha */
+    align-items: center;
+    color: var(--medium-beige);
+    justify-content: flex-start;
+    /* Alinha à esquerda */
+}
+
+.footer-column p .fas,
+.footer-column p .fab {
+    margin-right: 8px;
+    color: var(--soft-gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 20px;
+    color: var(--medium-beige);
+}
+
+/* Responsive Adjustments (REORGANIZADO E CONSOLIDADO) */
+
+/* Para telas muito grandes (desktops) */
+@media (min-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Para telas de tablets e laptops (até 991px de largura) */
+@media (max-width: 991px) {
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .main-nav {
+        width: auto;
+        margin-top: 0;
+        position: relative;
+    }
+
+    .main-nav .nav-list {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        display: none;
+        background-color: var(--medium-beige);
+        padding: 15px 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .main-nav .nav-list li {
+        margin: 10px 0;
+        margin-left: 0;
+    }
+
+    .main-nav.active .nav-list {
+        display: flex;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        position: static;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        padding: 2rem 0;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-column {
+        text-align: left;
+        /* Alinha todas as colunas do footer à esquerda */
+    }
+
+    .footer-column:first-child {
+        /* Mas mantém a primeira coluna centralizada */
+        text-align: center;
+    }
+
+    .footer-column p {
+        /* Garante que os parágrafos com ícones se alinhem à esquerda também */
+        justify-content: flex-start;
+    }
+
+    .content-block {
+        flex-direction: column;
+    }
+
+    .content-block:nth-child(even) {
+        flex-direction: column;
+    }
+
+    /* REGRA APLICADA PARA BENEFITS-GRID EM TABLETS/LAPTOPS MENORES */
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Dois itens por linha para tablets */
+        gap: 1.5rem;
+    }
+}
+
+/* Para telas de smartphones (até 767px de largura) */
+@media (max-width: 767px) {
+    .hero-banner {
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../images/banner.png') no-repeat left center/cover;
+    }
+
+    .hero-content h2 {
+        font-size: 2em;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .product-title {
+        font-size: 1.2em;
+    }
+
+    .btn-buy {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+
+    .contact-info-block h3,
+    .contact-form-block h3 {
+        font-size: 1.5em;
+    }
+
+    .contact-info-block p {
+        font-size: 1em;
+    }
+
+    .content-block h3 {
+        font-size: 1.7em;
+    }
+
+    .content-block p {
+        font-size: 1em;
+    }
+
+    .btn-whatsapp-large {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+
+    /* REGRA APLICADA PARA BENEFITS-GRID EM SMARTPHONES */
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        /* Força UMA ÚNICA COLUNA para smartphones */
+        gap: 1.5rem;
+    }
+}
+
+/* Para telas de smartphones menores (até 575px de largura) */
+@media (max-width: 575px) {
+    .product-card {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .product-card {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+
+    .logo h1 {
+        font-size: 1.8em;
+    }
+
+    .mobile-menu-toggle {
+        font-size: 1.5em;
+    }
+
+    .hero-banner {
+        padding: 60px 10px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8em;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .footer-column {
+        /* Redefine para um alinhamento padrão */
+        text-align: left;
+    }
+
+    .footer-column:first-child {
+        /* Mantém a primeira coluna (Sobre a PelúciaPet) centralizada */
+        text-align: center;
+    }
+
+    .footer-column ul {
+        display: inline-block;
+        /* Mantém o alinhamento de lista se precisar de ajuste interno */
+        text-align: left;
+        /* Garante que os itens da lista fiquem à esquerda */
+    }
+
+    .footer-column p {
+        justify-content: flex-start;
+        /* Garante alinhamento à esquerda para parágrafos com ícones */
+    }
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+.some-element {
+    width: 100%;
+}
+
+/* Opcional: Se você quiser um efeito ao passar o mouse para mostrar a segunda imagem, por exemplo */
+
+.product-image:hover img:first-child {
+
+    opacity: 0;
+
+}
+
+
+
+.product-image:hover img:nth-child(2) {
+
+    opacity: 1;
+
+}
+
+/* NOVO: Contêiner para o ícone e tooltip de informação */
+.tooltip-info-container {
+    position: relative;
+    display: inline-block; /* Para posicionamento relativo do tooltip */
+    margin-left: 5px; /* Espaçamento entre o "Tamanhos:" e o ícone */
+    cursor: help; /* Indica que é um elemento interativo de ajuda */
+    /* Adiciona z-index ao container para garantir que ele e seus filhos fiquem acima de outros */
+    z-index: 10; /* Um valor inicial razoável. Se ainda sobrepor, aumente. */
+}
+
+/* NOVO: Estilo do balão de informação (tooltip) */
+.custom-info-tooltip {
+    position: absolute;
+    top: 50%; /* Alinha verticalmente com o ícone */
+    left: calc(100% + 15px); /* Posição à direita do ícone, com espaçamento */
+    transform: translateY(-50%); /* Ajuste para alinhamento vertical */
+    background-color: var(--darkest-brown); /* Cor de fundo do balão */
+    color: var(--white-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85em; /* Tamanho da fonte do texto no balão */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Invisível por padrão */
+    visibility: hidden; /* Esconde do fluxo do documento */
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    
+    /* ESSENCIAL: Garante que o tooltip fique acima dos outros elementos */
+    z-index: 1000; /* Um valor muito alto para sobrepor quase tudo na página */
+
+    min-width: 170px; /* Largura mínima para o tooltip - ajuste conforme necessário */
+    max-width: 250px; /* Largura máxima para o tooltip, antes de quebrar linha - ajuste conforme necessário */
+    white-space: normal; /* Permite quebra de linha */
+    text-align: center; /* Centraliza o texto dentro do tooltip */
+}
+
+.custom-info-tooltip p {
+    margin: 0; /* Remover margem padrão do parágrafo dentro do tooltip */
+    line-height: 1.6;
+}
+
+/* NOVO: Seta do balão de informação */
+.custom-info-tooltip::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%; /* Posiciona a seta à esquerda do balão */
+    /* Ajuste no transform para alinhar melhor a seta com o ícone */
+    transform: translateY(-50%) translateX(7px) rotate(45deg); /* Move a seta 7px para a direita (em relação à sua base) */
+    width: 10px; /* Tamanho da seta */
+    height: 10px; /* Tamanho da seta */
+    background-color: var(--darkest-brown); /* Cor da seta igual ao balão */
+    z-index: 999; /* Um z-index ligeiramente menor que o do tooltip, mas ainda alto */
+}
+
+/* NOVO: Mostra o balão e a seta ao passar o mouse */
+.tooltip-info-container:hover .custom-info-tooltip,
+.tooltip-info-container:hover .custom-info-tooltip::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0); /* Efeito de pop-in */
+}
+/* Estilos para integração com API */
+.loading-products,
+.no-products,
+.error-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--medium-brown);
+}
+
+.loading-products i,
+.no-products i,
+.error-products i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--soft-gold);
+}
+
+.loading-products i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.no-products p,
+.error-products p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.error-products {
+    color: #dc3545;
+}
+
+.error-products i {
+    color: #dc3545;
+}
+
+/* Placeholder para imagens */
+.placeholder-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    background-color: var(--light-beige);
+    color: var(--medium-brown);
+    border-radius: 10px;
+}
+
+.placeholder-image i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+}
+
+.placeholder-image p {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Badge de promoção */
+.product-badge.promotion {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+/* Preço antigo */
+.old-price {
+    text-decoration: line-through;
+    color: var(--medium-brown);
+    font-size: 0.9em;
+    margin-right: 0.5rem;
+}
+
+/* Material do produto */
+.product-material {
+    font-size: 0.9rem;
+    color: var(--medium-brown);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--light-beige);
+}
+
+/* Botão WhatsApp melhorado */
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-whatsapp i {
+    font-size: 1.2em;
+}
+
+/* Responsividade para novos elementos */
+@media (max-width: 768px) {
+    .loading-products,
+    .no-products,
+    .error-products {
+        padding: 2rem 1rem;
+    }
+    
+    .loading-products i,
+    .no-products i,
+    .error-products i {
+        font-size: 2rem;
+    }
+    
+    .placeholder-image {
+        height: 200px;
+    }
+    
+    .placeholder-image i {
+        font-size: 2rem;
+    }
+}
+

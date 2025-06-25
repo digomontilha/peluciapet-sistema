@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roupas | PelúciaPet</title>
+    <meta name="description"
+        content="Encontre as melhores roupas para seu pet na PelúciaPet. Estilo e conforto para seu melhor amigo.">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&family=Satisfy&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>PelúciaPet</h1>
+                    <span class="tagline">Conforto para seu pet</span>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-toggle" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="index.html">Caminhas</a></li>
+                        <li><a href="roupinhas.html" class="active">Roupinhas</a></li>
+                        <li><a href="como-comprar.html">Como Comprar</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="hero-banner">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Roupas para seu Pet</h2>
+                <p>Estilo e conforto para seu melhor amigo</p>
+                <a href="#produtos" class="btn btn-primary">Ver Coleção</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Grid de Produtos -->
+    <section id="produtos" class="products">
+        <div class="container">
+            <h2 class="section-title">Nossas Roupas</h2>
+            <div class="products-grid">
+                <!-- Produto 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="main-image-wrapper">
+                            <img src="images/produtos/unisex_manga_curta_bege.png" alt="Caminha Redonda Pelúcia"
+                                class="active-image">
+                            <img src="images/produtos/unisex_manga_curta_bege_1.png"
+                                alt="Caminha Redonda Pelúcia - Vista 1">
+                        </div>
+                        <!-- <div class="product-badge">Novidade</div> -->
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Camiseta Rosa para Pet</h3>
+
+                        <p class="product-description">Camiseta de algodão macio, ideal para o dia a dia.</p>
+                        <div class="product-price">
+                            <span class="price">A partir de R$ 39,90</span>
+                        </div>
+
+                        <div class="product-sizes">
+                            <span>Tamanhos:</span>
+                            <p></p>
+                            <div class="size-options">
+                                <div class="tooltip-info-container">
+                                    <i class="fas fa-question-circle tooltip-info-icon"></i>
+                                    <div class="custom-info-tooltip">
+                                        <p>Largura x Comprimento x Altura</p>
+                                    </div>
+                                </div>
+                                <button class="size-btn" data-dimension="30x20cm">P</button>
+                                <button class="size-btn" data-dimension="40x30cm">M</button>
+                            </div>
+
+                        </div>
+                        <div class="product-colors">
+                            <span>Cores:</span>
+                            <div class="color-options">
+                                <button class="color-btn" style="background-color: #FFC0CB;" aria-label="Rosa"></button>
+                                <button class="color-btn" style="background-color: #ADD8E6;" aria-label="Azul"></button>
+                                <button class="color-btn" style="background-color: #90EE90;"
+                                    aria-label="Verde"></button>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5511956057996?text=Olá! Tenho interesse na Camiseta Rosa para Pet. Poderia me dar mais informações?"
+                            class="btn btn-primary btn-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="main-image-wrapper">
+                            <img src="images/produtos/unisex_manga_curta_estampa.png" alt="Caminha Redonda Pelúcia"
+                                class="active-image">
+                            <img src="images/produtos/unisex_manga_curta_estampa_1.png"
+                                alt="Caminha Redonda Pelúcia - Vista 1">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Casaco de Inverno para Pet</h3>
+
+                        <p class="product-description">Casaco quente e confortável para os dias frios.</p>
+                        <div class="product-price">
+                            <span class="price">A partir de R$ 79,90</span>
+                        </div>
+                        <div class="product-sizes">
+                            <span>Tamanhos:</span>
+                             <p></p>
+                            <div class="size-options">
+                                <div class="tooltip-info-container">
+                                    <i class="fas fa-question-circle tooltip-info-icon"></i>
+                                    <div class="custom-info-tooltip">
+                                        <p>Largura x Comprimento x Altura</p>
+                                    </div>
+                                </div>
+                                <button class="size-btn" data-dimension="30x20cm">P</button>
+                                <button class="size-btn" data-dimension="40x30cm">M</button>
+                            </div>
+                        </div>
+                        <div class="product-colors">
+                            <span>Cores:</span>
+                            <div class="color-options">
+                                <button class="color-btn" style="background-color: #808080;"
+                                    aria-label="Cinza"></button>
+                                <button class="color-btn" style="background-color: #4682B4;"
+                                    aria-label="Azul Aço"></button>
+                                <button class="color-btn" style="background-color: #A52A2A;"
+                                    aria-label="Marrom"></button>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5511956057996?text=Olá! Tenho interesse no Casaco de Inverno para Pet. Poderia me dar mais informações?"
+                            class="btn btn-primary btn-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="main-image-wrapper">
+                            <img src="images/produtos/vestido_frente_unica_calor.png" alt="Caminha Redonda Pelúcia"
+                                class="active-image">
+                            <img src="images/produtos/vestido_frente_unica_calor_1.png"
+                                alt="Caminha Redonda Pelúcia - Vista 1">
+                        </div>
+                        <div class="product-badge">Mais Vendido</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Vestido Floral para Pet</h3>
+
+                        <p class="product-description">Vestido leve e charmoso com estampa floral.</p>
+                        <div class="product-price">
+                            <span class="price">A partir de R$ 59,90</span>
+                        </div>
+                        <div class="product-sizes">
+                            <span>Tamanhos:</span>
+                              <p></p>
+                            <div class="tooltip-info-container">
+                                    <i class="fas fa-question-circle tooltip-info-icon"></i>
+                                    <div class="custom-info-tooltip">
+                                        <p>Largura x Comprimento x Altura</p>
+                                    </div>
+                                </div>
+                            <div class="size-options">
+                                <button class="size-btn" data-dimension="30x20cm">P</button>
+                                <button class="size-btn" data-dimension="40x30cm">M</button>
+                            </div>
+
+                        </div>
+                        <div class="product-colors">
+                            <span>Cores:</span>
+                            <div class="color-options">
+                                <button class="color-btn" style="background-color: #FFC0CB;" aria-label="Rosa"></button>
+                                <button class="color-btn" style="background-color: #F0E68C;"
+                                    aria-label="Amarelo"></button>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5511956057996?text=Olá! Tenho interesse no Vestido Floral para Pet. Poderia me dar mais informações?"
+                            class="btn btn-primary btn-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Produto 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="main-image-wrapper">
+                            <img src="images/produtos/vestido_manga_curta_2cores.png" alt="Caminha Redonda Pelúcia"
+                                class="active-image">
+                            <img src="images/produtos/vestido_manga_curta_2cores_1.png"
+                                alt="Caminha Redonda Pelúcia - Vista 1">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bandana Estampada para Pet</h3>
+
+                        <p class="product-description">Bandana estilosa para deixar seu pet ainda mais charmoso.</p>
+                        <div class="product-price">
+                            <span class="price">A partir de R$ 29,90</span>
+                        </div>
+                        <div class="product-sizes">
+                            <span>Tamanhos:</span>
+                              <p></p>
+                            <div class="tooltip-info-container">
+                                    <i class="fas fa-question-circle tooltip-info-icon"></i>
+                                    <div class="custom-info-tooltip">
+                                        <p>Largura x Comprimento x Altura</p>
+                                    </div>
+                                </div>
+                            <div class="size-options">
+                                <button class="size-btn" data-dimension="30x20cm">P</button>
+                                <button class="size-btn" data-dimension="40x30cm">M</button>
+                            </div>
+
+                        </div>
+                        <div class="product-colors">
+                            <span>Cores:</span>
+                            <div class="color-options">
+                                <button class="color-btn" style="background-color: #FFC0CB;" aria-label="Rosa"></button>
+                                <button class="color-btn" style="background-color: #ADD8E6;" aria-label="Azul"></button>
+                                <button class="color-btn" style="background-color: #90EE90;"
+                                    aria-label="Verde"></button>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5511956057996?text=Olá! Tenho interesse na Bandana Estampada para Pet. Poderia me dar mais informações?"
+                            class="btn btn-primary btn-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="main-image-wrapper">
+                            <img src="images/produtos/vestido_manga_curta_simples.png" alt="Caminha Redonda Pelúcia"
+                                class="active-image">
+                            <img src="images/produtos/vestido_manga_curta_simples_1.png"
+                                alt="Caminha Redonda Pelúcia - Vista 1">
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bandana Estampada para Pet</h3>
+
+                        <p class="product-description">Bandana estilosa para deixar seu pet ainda mais charmoso.</p>
+                        <div class="product-price">
+                            <span class="price">A partir de R$ 29,90</span>
+                        </div>
+                        <div class="product-sizes">
+                            <span>Tamanhos:</span>
+                              <p></p>
+                            <div class="tooltip-info-container">
+                                    <i class="fas fa-question-circle tooltip-info-icon"></i>
+                                    <div class="custom-info-tooltip">
+                                        <p>Largura x Comprimento x Altura</p>
+                                    </div>
+                                </div>
+                            <div class="size-options">
+
+                                <button class="size-btn" data-dimension="30x20cm">P</button>
+                                <button class="size-btn" data-dimension="40x30cm">M</button>
+                            </div>
+
+                        </div>
+                        <div class="product-colors">
+                            <span>Cores:</span>
+                            <div class="color-options">
+                                <button class="color-btn" style="background-color: #FFC0CB;" aria-label="Rosa"></button>
+                                <button class="color-btn" style="background-color: #ADD8E6;" aria-label="Azul"></button>
+                                <button class="color-btn" style="background-color: #90EE90;"
+                                    aria-label="Verde"></button>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5511956057996?text=Olá! Tenho interesse na Bandana Estampada para Pet. Poderia me dar mais informações?"
+                            class="btn btn-primary btn-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Benefícios -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-truck"></i>
+                    <h3>Frete</h3>
+                    <p>Á combinar</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Parcelamento</h3>
+                    <p>Com juros</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garantia de Qualidade</h3>
+                    <p>1 meses de garantia</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Troca Fácil</h3>
+                    <p>7 dias para devolução</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sobre a PelúciaPet</h3>
+                    <p>Conforto e qualidade para seu melhor amigo. Oferecemos as melhores caminhas para pets, feitas com
+                        amor e carinho.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="como-comprar.html">Como Comprar</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="como-comprar.html">Como Comprar</a></li>
+                        <li><a href="#">Prazos de Entrega</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                        <li><a href="#">Formas de Pagamento</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone"></i> (11) 95605-7996</p>
+                    <p><i class="fas fa-envelope"></i> contato@peluciapet.com.br</p>
+
+                </div>
+            </div>
+            <div class="footer-column">
+                <p>&copy; 2024 PelúciaPet. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api-integration.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

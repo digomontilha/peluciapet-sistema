@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PelúciaPet Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Satisfy:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #FDF6ED 0%, #F5F5F5 100%);
+            min-height: 100vh;
+            color: #5C2C0D;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #5C2C0D 0%, #A0522D 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+
+        .logo i {
+            color: #D4A04C;
+            margin-right: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #D4A04C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .user-role {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #5C2C0D;
+        }
+
+        .page-subtitle {
+            color: #A0522D;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #EBC6A8;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #D4A04C, #EBC6A8);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .stat-icon.products { background: linear-gradient(45deg, #5C2C0D, #A0522D); }
+        .stat-icon.categories { background: linear-gradient(45deg, #D4A04C, #EBC6A8); }
+        .stat-icon.variations { background: linear-gradient(45deg, #8B4513, #CD853F); }
+        .stat-icon.featured { background: linear-gradient(45deg, #DAA520, #FFD700); }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #5C2C0D;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: #A0522D;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .stat-change {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .stat-change.positive {
+            color: #28a745;
+        }
+
+        .stat-change.negative {
+            color: #dc3545;
+        }
+
+        /* Action Cards */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .action-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #EBC6A8;
+        }
+
+        .action-card h3 {
+            color: #5C2C0D;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #5C2C0D, #A0522D);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #4A2309, #8B4513);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(92, 44, 13, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #D4A04C, #EBC6A8);
+            color: #5C2C0D;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(45deg, #C19A3E, #DDB896);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #D4A04C;
+            color: #5C2C0D;
+        }
+
+        .btn-outline:hover {
+            background: #D4A04C;
+            color: white;
+        }
+
+        /* Recent Products */
+        .recent-products {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #EBC6A8;
+        }
+
+        .recent-products h3 {
+            color: #5C2C0D;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #EBC6A8;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .product-item:hover {
+            background: #FDF6ED;
+            transform: translateX(5px);
+        }
+
+        .product-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: #EBC6A8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5C2C0D;
+            font-size: 1.5rem;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-name {
+            font-weight: 600;
+            color: #5C2C0D;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-category {
+            color: #A0522D;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: #D4A04C;
+            font-size: 1.1rem;
+        }
+
+        /* Loading States */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #A0522D;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #EBC6A8;
+            border-top: 2px solid #D4A04C;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Error States */
+        .error {
+            background: #ffe6e6;
+            color: #d63031;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #fab1a0;
+            margin: 1rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .user-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .actions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in {
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-paw"></i>PelúciaPet Admin
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <div class="user-name" id="userName">Carregando...</div>
+                    <div class="user-role" id="userRole">...</div>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-title fade-in">Dashboard</div>
+        <div class="page-subtitle fade-in">Bem-vindo ao painel administrativo da PelúciaPet</div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid fade-in">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon products">
+                        <i class="fas fa-box"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="totalProdutos">
+                    <div class="spinner"></div>
+                </div>
+                <div class="stat-label">Total de Produtos</div>
+                <div class="stat-change positive" id="produtosChange">
+                    <i class="fas fa-arrow-up"></i> +5% este mês
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon categories">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="totalCategorias">
+                    <div class="spinner"></div>
+                </div>
+                <div class="stat-label">Categorias Ativas</div>
+                <div class="stat-change positive" id="categoriasChange">
+                    <i class="fas fa-check"></i> Estável
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon variations">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="totalVariacoes">
+                    <div class="spinner"></div>
+                </div>
+                <div class="stat-label">Variações Disponíveis</div>
+                <div class="stat-change positive" id="variacoesChange">
+                    <i class="fas fa-arrow-up"></i> +12% este mês
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon featured">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="produtosDestaque">
+                    <div class="spinner"></div>
+                </div>
+                <div class="stat-label">Produtos em Destaque</div>
+                <div class="stat-change positive" id="destaqueChange">
+                    <i class="fas fa-crown"></i> Selecionados
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="actions-grid slide-in">
+            <div class="action-card">
+                <h3>
+                    <i class="fas fa-plus-circle"></i>
+                    Gerenciar Produtos
+                </h3>
+                <div class="action-buttons">
+                    <a href="cadastro-produto.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Cadastrar Novo Produto
+                    </a>
+                    <button class="btn btn-secondary" onclick="listarProdutos()">
+                        <i class="fas fa-list"></i> Ver Todos os Produtos
+                    </button>
+                    <button class="btn btn-outline" onclick="produtosDestaque()">
+                        <i class="fas fa-star"></i> Gerenciar Destaques
+                    </button>
+                </div>
+            </div>
+
+            <div class="action-card">
+                <h3>
+                    <i class="fas fa-chart-bar"></i>
+                    Relatórios e Análises
+                </h3>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="relatorioVendas()">
+                        <i class="fas fa-chart-line"></i> Relatório de Vendas
+                    </button>
+                    <button class="btn btn-secondary" onclick="relatorioEstoque()">
+                        <i class="fas fa-boxes"></i> Controle de Estoque
+                    </button>
+                    <button class="btn btn-outline" onclick="analiseProdutos()">
+                        <i class="fas fa-analytics"></i> Análise de Produtos
+                    </button>
+                </div>
+            </div>
+
+            <div class="action-card">
+                <h3>
+                    <i class="fas fa-cog"></i>
+                    Configurações
+                </h3>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="configuracoes()">
+                        <i class="fas fa-sliders-h"></i> Configurações Gerais
+                    </button>
+                    <button class="btn btn-secondary" onclick="gerenciarUsuarios()">
+                        <i class="fas fa-users"></i> Gerenciar Usuários
+                    </button>
+                    <button class="btn btn-outline" onclick="backup()">
+                        <i class="fas fa-download"></i> Backup do Sistema
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Products -->
+        <div class="recent-products slide-in">
+            <h3>
+                <i class="fas fa-clock"></i>
+                Produtos Recentes
+            </h3>
+            <div class="product-list" id="recentProducts">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Carregando produtos recentes...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Configurações da API
+        const API_BASE = '../api/produtos.php';
+        const AUTH_API = '../api/auth.php';
+
+        // Estado da aplicação
+        let currentUser = null;
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', async () => {
+            await checkAuthentication();
+            await loadDashboardData();
+        });
+
+        // Verificar autenticação
+        async function checkAuthentication() {
+            try {
+                const response = await fetch(`${AUTH_API}?action=check`);
+                const data = await response.json();
+
+                if (!data.authenticated) {
+                    window.location.href = '../auth/login.php';
+                    return;
+                }
+
+                currentUser = data.user;
+                updateUserInfo(data.user);
+            } catch (error) {
+                console.error('Erro ao verificar autenticação:', error);
+                window.location.href = '../auth/login.php';
+            }
+        }
+
+        // Atualizar informações do usuário no header
+        function updateUserInfo(user) {
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userRole').textContent = getRoleDisplayName(user.role);
+            
+            // Atualizar avatar com inicial do nome
+            const avatar = document.getElementById('userAvatar');
+            avatar.textContent = user.name.charAt(0).toUpperCase();
+        }
+
+        // Obter nome de exibição da role
+        function getRoleDisplayName(role) {
+            const roles = {
+                'admin': 'Administrador',
+                'manager': 'Gerente',
+                'editor': 'Editor',
+                'viewer': 'Visualizador'
+            };
+            return roles[role] || role;
+        }
+
+        // Carregar dados do dashboard
+        async function loadDashboardData() {
+            await Promise.all([
+                loadStatistics(),
+                loadRecentProducts()
+            ]);
+        }
+
+        // Carregar estatísticas
+        async function loadStatistics() {
+            try {
+                const response = await fetch(`${API_BASE}?action=estatisticas`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const stats = data.estatisticas;
+                    
+                    // Atualizar valores com animação
+                    animateValue('totalProdutos', 0, stats.total_produtos || 0, 1000);
+                    animateValue('totalCategorias', 0, stats.por_categoria?.length || 0, 1000);
+                    animateValue('totalVariacoes', 0, stats.total_variacoes || 0, 1000);
+                    animateValue('produtosDestaque', 0, stats.produtos_destaque || 0, 1000);
+                } else {
+                    showError('Erro ao carregar estatísticas: ' + data.message);
+                }
+            } catch (error) {
+                console.error('Erro ao carregar estatísticas:', error);
+                showError('Erro de conexão ao carregar estatísticas');
+            }
+        }
+
+        // Carregar produtos recentes
+        async function loadRecentProducts() {
+            try {
+                const response = await fetch(`${API_BASE}?action=produtos&limite=5&ordem=created_at_desc`);
+                const data = await response.json();
+
+                const container = document.getElementById('recentProducts');
+
+                if (data.success && data.produtos.length > 0) {
+                    container.innerHTML = data.produtos.map(produto => `
+                        <div class="product-item">
+                            <div class="product-image">
+                                ${produto.imagem_principal ? 
+                                    `<img src="${produto.imagem_principal}" alt="${produto.nome}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">` :
+                                    '<i class="fas fa-image"></i>'
+                                }
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">${produto.nome}</div>
+                                <div class="product-category">${produto.categoria_nome || 'Sem categoria'}</div>
+                            </div>
+                            <div class="product-price">
+                                R$ ${formatPrice(produto.preco_base)}
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = `
+                        <div style="text-align: center; padding: 2rem; color: #A0522D;">
+                            <i class="fas fa-box-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                            <p>Nenhum produto encontrado</p>
+                            <a href="cadastro-produto.html" class="btn btn-primary" style="margin-top: 1rem;">
+                                <i class="fas fa-plus"></i> Cadastrar Primeiro Produto
+                            </a>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Erro ao carregar produtos recentes:', error);
+                document.getElementById('recentProducts').innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Erro ao carregar produtos recentes
+                    </div>
+                `;
+            }
+        }
+
+        // Animar valores numericos
+        function animateValue(elementId, start, end, duration) {
+            const element = document.getElementById(elementId);
+            const range = end - start;
+            const increment = range / (duration / 16);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        // Formatar preço
+        function formatPrice(price) {
+            return parseFloat(price).toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        // Mostrar erro
+        function showError(message) {
+            // Implementar sistema de notificações
+            console.error(message);
+        }
+
+        // Logout
+        async function logout() {
+            if (confirm('Tem certeza que deseja sair?')) {
+                try {
+                    await fetch(`${AUTH_API}?action=logout`, { method: 'POST' });
+                    window.location.href = '../auth/login.php';
+                } catch (error) {
+                    console.error('Erro no logout:', error);
+                    window.location.href = '../auth/login.php';
+                }
+            }
+        }
+
+        // Funções dos botões de ação (placeholders)
+        function listarProdutos() {
+            alert('Funcionalidade em desenvolvimento: Listar Produtos');
+        }
+
+        function produtosDestaque() {
+            alert('Funcionalidade em desenvolvimento: Gerenciar Destaques');
+        }
+
+        function relatorioVendas() {
+            alert('Funcionalidade em desenvolvimento: Relatório de Vendas');
+        }
+
+        function relatorioEstoque() {
+            alert('Funcionalidade em desenvolvimento: Controle de Estoque');
+        }
+
+        function analiseProdutos() {
+            alert('Funcionalidade em desenvolvimento: Análise de Produtos');
+        }
+
+        function configuracoes() {
+            alert('Funcionalidade em desenvolvimento: Configurações');
+        }
+
+        function gerenciarUsuarios() {
+            alert('Funcionalidade em desenvolvimento: Gerenciar Usuários');
+        }
+
+        function backup() {
+            alert('Funcionalidade em desenvolvimento: Backup do Sistema');
+        }
+
+        // Atualizar dados periodicamente
+        setInterval(loadStatistics, 300000); // A cada 5 minutos
+    </script>
+</body>
+</html>
+
