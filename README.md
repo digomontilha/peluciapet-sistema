@@ -1,267 +1,403 @@
-# 🐾 Sistema PelúciaPet
+# 🐾 Sistema PelúciaPet v2.1
 
-> **Solução completa para gerenciamento de produtos pet com sistema administrativo avançado e frontend integrado**
+> **Sistema completo de e-commerce para produtos pet com funcionalidades avançadas**
 
-[![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?style=flat&logo=php&logoColor=white)](https://php.net)
-[![MySQL](https://img.shields.io/badge/MySQL-5.7+-4479A1?style=flat&logo=mysql&logoColor=white)](https://mysql.com)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://javascript.info)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Versão](https://img.shields.io/badge/versão-2.1.0-FF6B9D.svg)](https://github.com/digomontilha/peluciapet-sistema)
+[![PHP](https://img.shields.io/badge/PHP-8.3+-A0522D.svg)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0+-D4A04C.svg)](https://mysql.com)
+[![License](https://img.shields.io/badge/license-MIT-5C2C0D.svg)](LICENSE)
 
-## 🎯 Sobre o Projeto
+## ✨ Novidades da Versão 2.1
 
-O **Sistema PelúciaPet** é uma plataforma completa desenvolvida especificamente para lojas de produtos pet, oferecendo:
+### 📸 **Sistema de Upload de Imagens**
+- Upload múltiplo de imagens por produto
+- Redimensionamento automático e otimização
+- Galeria com reordenação por arrastar e soltar
+- Suporte a WebP, JPEG, PNG
+- Compressão inteligente para web
 
-- **🛡️ Sistema Administrativo Seguro** com autenticação e controle de permissões
-- **📦 Gerenciamento Completo de Produtos** com variações de tamanho e cor
-- **🌐 Frontend Responsivo** integrado para exibição pública
-- **📱 Integração WhatsApp** para facilitar vendas
-- **📊 Dashboard com Estatísticas** em tempo real
-- **🔄 API REST Completa** para integrações futuras
+### 🏷️ **Sistema de Categorias Hierárquico**
+- Categorias e subcategorias ilimitadas (até 3 níveis)
+- URLs amigáveis (SEO-friendly)
+- Breadcrumbs automáticos
+- Cores e ícones personalizáveis
+- Meta tags para SEO
 
-## ✨ Principais Funcionalidades
+### 📊 **Relatórios Avançados de Vendas**
+- Dashboard em tempo real com gráficos
+- Análise de performance por produto/categoria
+- Relatórios de clientes e retenção
+- Previsão de vendas baseada em IA
+- Exportação para CSV/Excel
 
-### 🔐 Sistema de Autenticação
-- Login seguro com proteção contra ataques
-- Controle de sessões e permissões
-- Bloqueio automático por tentativas excessivas
-- Diferentes níveis de acesso (Admin, Gerente, Editor, Visualizador)
+### 📦 **Integração com Correios**
+- Cálculo automático de frete (PAC, SEDEX)
+- Consulta de CEP em tempo real
+- Rastreamento de encomendas
+- Múltiplas modalidades de entrega
+- Frete grátis configurável
 
-### 📦 Gerenciamento de Produtos
-- Cadastro completo com informações detalhadas
-- Sistema de variações (tamanhos e cores)
-- Controle de estoque automatizado
-- Produtos em destaque
-- SEO otimizado para cada produto
+### 🎫 **Sistema de Cupons Inteligente**
+- Cupons percentuais, valor fixo e frete grátis
+- Restrições por categoria, produto ou cliente
+- Limites de uso e validade
+- Cupons para primeira compra
+- Relatórios de performance
 
-### 🎨 Interface Moderna
-- Design responsivo para todos os dispositivos
-- Paleta de cores personalizada da marca
-- Animações suaves e micro-interações
-- Dashboard intuitivo com estatísticas visuais
+## 🚀 Funcionalidades Principais
 
-### 📱 Integração WhatsApp
-- Links diretos para WhatsApp com produto
-- Mensagens personalizadas automáticas
-- Facilita o processo de vendas
+### 🛍️ **E-commerce Completo**
+- ✅ Catálogo de produtos responsivo
+- ✅ Carrinho de compras inteligente
+- ✅ Checkout simplificado
+- ✅ Múltiplas formas de pagamento
+- ✅ Gestão de pedidos completa
 
-### 🔧 Tecnologias Utilizadas
+### 🎨 **Design Profissional**
+- ✅ Interface moderna e responsiva
+- ✅ Paleta de cores da marca PelúciaPet
+- ✅ Animações suaves e micro-interações
+- ✅ Otimizado para mobile e desktop
+- ✅ Acessibilidade (WCAG 2.1)
 
-#### Backend
-- **PHP 8.0+** - Linguagem principal
-- **MySQL 5.7+** - Banco de dados
-- **PDO** - Camada de abstração de dados
-- **Arquitetura MVC** - Organização do código
+### 🔐 **Segurança Avançada**
+- ✅ Sistema de autenticação robusto
+- ✅ Proteção contra ataques comuns
+- ✅ Criptografia de dados sensíveis
+- ✅ Logs de auditoria
+- ✅ Backup automático
 
-#### Frontend
-- **HTML5/CSS3** - Estrutura e estilização
+### 📱 **Integração Social**
+- ✅ WhatsApp Business integrado
+- ✅ Compartilhamento em redes sociais
+- ✅ Instagram Shopping (preparado)
+- ✅ Google Analytics integrado
+- ✅ Facebook Pixel (preparado)
+
+## 🛠️ Tecnologias Utilizadas
+
+### **Backend**
+- **PHP 8.3+** - Linguagem principal
+- **MySQL 8.0+** - Banco de dados
+- **PDO** - Abstração de banco
+- **JWT** - Autenticação
+- **cURL** - Integrações externas
+
+### **Frontend**
+- **HTML5** - Estrutura semântica
+- **CSS3** - Estilização avançada
 - **JavaScript ES6+** - Interatividade
+- **Chart.js** - Gráficos e relatórios
 - **Font Awesome** - Ícones
-- **Google Fonts** - Tipografia
 
-#### Segurança
-- **Autenticação baseada em sessões**
-- **Proteção CSRF**
-- **Sanitização de dados**
-- **Headers de segurança**
-- **Rate limiting**
+### **APIs Integradas**
+- **Correios** - Cálculo de frete
+- **ViaCEP** - Consulta de endereços
+- **WhatsApp Business** - Atendimento
+- **Google Analytics** - Métricas
+
+## 📋 Requisitos do Sistema
+
+### **Servidor Web**
+- Apache 2.4+ ou Nginx 1.18+
+- PHP 8.3+ com extensões:
+  - PDO MySQL
+  - GD ou ImageMagick
+  - cURL
+  - JSON
+  - mbstring
+  - OpenSSL
+
+### **Banco de Dados**
+- MySQL 8.0+ ou MariaDB 10.6+
+- Mínimo 100MB de espaço
+- Suporte a UTF-8 (utf8mb4)
+
+### **Recursos**
+- Mínimo 512MB RAM
+- 1GB espaço em disco
+- SSL/TLS (recomendado)
 
 ## 🚀 Instalação Rápida
 
-### Pré-requisitos
-- Servidor web (Apache/Nginx)
-- PHP 7.4+ com extensões: PDO, MySQL, JSON, mbstring
-- MySQL 5.7+ ou MariaDB 10.3+
-- Certificado SSL (recomendado)
+### 1. **Download e Extração**
+```bash
+# Baixar o sistema
+wget https://github.com/digomontilha/peluciapet-sistema/archive/v2.1.zip
 
-### Passos de Instalação
+# Extrair arquivos
+unzip v2.1.zip -d /var/www/html/
+cd /var/www/html/peluciapet-sistema-2.1/
+```
 
-1. **Clone ou baixe o projeto**
-   ```bash
-   # Extrair arquivos para o diretório web
-   unzip peluciapet-final.zip -d /var/www/html/
-   ```
+### 2. **Configuração do Banco**
+```bash
+# Criar banco de dados
+mysql -u root -p -e "CREATE DATABASE peluciapet CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-2. **Configure o banco de dados**
-   ```sql
-   CREATE DATABASE peluciapet CHARACTER SET utf8mb4;
-   -- Execute o script database/install.sql
-   ```
+# Importar estrutura
+mysql -u root -p peluciapet < database/update-v2.1.sql
+```
 
-3. **Configure as credenciais**
-   ```php
-   // Edite admin/config/config.php
-   define('DB_HOST', 'localhost');
-   define('DB_NAME', 'peluciapet');
-   define('DB_USER', 'seu_usuario');
-   define('DB_PASS', 'sua_senha');
-   define('BASE_URL', 'https://seudominio.com.br');
-   ```
+### 3. **Configuração do Sistema**
+```bash
+# Copiar arquivo de configuração
+cp admin/config/config-exemplo.php admin/config/config.php
 
-4. **Configure o frontend**
-   ```javascript
-   // Edite js/config.js
-   const API_BASE_URL = 'https://seudominio.com.br/admin/api/api-publica.php';
-   ```
+# Editar configurações
+nano admin/config/config.php
+```
 
-5. **Acesse o sistema**
-   - **Site público:** `https://seudominio.com.br`
-   - **Admin:** `https://seudominio.com.br/admin/auth/login.php`
+### 4. **Permissões**
+```bash
+# Definir permissões
+chmod 755 -R .
+chmod 777 -R frontend/uploads/
+chmod 777 -R frontend/logs/
+chown -R www-data:www-data .
+```
 
-### Credenciais Padrão
-- **Usuário:** `admin` | **Senha:** `password`
-- **Usuário:** `peluciapet` | **Senha:** `peluciapet123`
+### 5. **Verificação**
+```bash
+# Executar verificador
+php verificar-sistema.php
+```
 
-> ⚠️ **Altere as senhas imediatamente após a instalação!**
+## ⚙️ Configuração Detalhada
 
-## 📁 Estrutura do Projeto
+### **Banco de Dados** (`admin/config/config.php`)
+```php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'peluciapet');
+define('DB_USER', 'seu_usuario');
+define('DB_PASS', 'sua_senha');
+define('DB_CHARSET', 'utf8mb4');
+```
+
+### **Correios** (Painel Admin)
+- Usuário dos Correios
+- Senha dos Correios
+- CEP de origem
+- Código da empresa (opcional)
+
+### **WhatsApp** (`frontend/js/config.js`)
+```javascript
+const WHATSAPP_CONFIG = {
+    numero: '5511999999999',
+    mensagem_padrao: 'Olá! Tenho interesse nos produtos da PelúciaPet.'
+};
+```
+
+## 📊 Estrutura do Projeto
 
 ```
-peluciapet-final/
-├── admin/                      # Sistema administrativo
+peluciapet-v2.1/
+├── admin/                      # Painel administrativo
 │   ├── api/                   # APIs REST
 │   │   ├── auth.php          # Autenticação
-│   │   ├── produtos.php      # API administrativa
-│   │   └── api-publica.php   # API pública
-│   ├── auth/                 # Sistema de login
-│   │   └── login.php         # Página de login
+│   │   ├── produtos.php      # Gestão de produtos
+│   │   ├── categorias.php    # Sistema de categorias
+│   │   ├── cupons.php        # Sistema de cupons
+│   │   ├── relatorios.php    # Relatórios e analytics
+│   │   ├── frete.php         # Integração Correios
+│   │   └── upload-imagens.php # Upload de imagens
 │   ├── classes/              # Classes PHP
-│   │   ├── Auth.php          # Gerenciamento de autenticação
-│   │   ├── Database.php      # Conexão com banco
-│   │   └── Produto.php       # Gerenciamento de produtos
+│   │   ├── Auth.php          # Autenticação
+│   │   ├── Database.php      # Conexão BD
+│   │   ├── Produto.php       # Gestão produtos
+│   │   ├── Categoria.php     # Categorias
+│   │   ├── Cupom.php         # Sistema cupons
+│   │   ├── RelatorioVendas.php # Relatórios
+│   │   ├── CorreiosAPI.php   # API Correios
+│   │   └── ImageUpload.php   # Upload imagens
 │   ├── config/               # Configurações
-│   │   └── config.php        # Configurações principais
-│   └── public/               # Interface administrativa
-│       ├── index.html        # Dashboard
-│       └── cadastro-produto.html # Cadastro de produtos
-├── frontend/                  # Site público
+│   │   └── config.php        # Config principal
+│   ├── public/               # Interface admin
+│   │   ├── dashboard-v2.html # Dashboard v2.1
+│   │   ├── categorias.html   # Gestão categorias
+│   │   ├── cupons.html       # Gestão cupons
+│   │   └── relatorios.html   # Relatórios
+│   └── auth/                 # Autenticação
+│       └── login.php         # Tela de login
+├── frontend/                 # Site público
 │   ├── css/                  # Estilos
 │   ├── js/                   # Scripts
 │   ├── images/               # Imagens
-│   └── *.html               # Páginas do site
+│   ├── uploads/              # Uploads
+│   └── *.html               # Páginas
 ├── database/                 # Banco de dados
-│   └── install.sql          # Script de instalação
+│   └── update-v2.1.sql      # Script atualização
 ├── docs/                     # Documentação
-│   ├── INSTALACAO.md        # Guia de instalação
-│   └── README.md            # Este arquivo
-└── scripts/                  # Scripts utilitários
-    └── backup-mysql.sh      # Script de backup
+│   └── INSTALACAO.md        # Guia instalação
+├── scripts/                  # Scripts utilitários
+│   └── backup-mysql.sh      # Backup automático
+└── verificar-sistema.php    # Verificador
 ```
 
-## 🎨 Screenshots
+## 🔧 APIs Disponíveis
 
-### Dashboard Administrativo
-![Dashboard](docs/images/dashboard.png)
+### **Autenticação**
+- `POST /admin/api/auth.php` - Login/logout
+- `GET /admin/api/auth.php?action=check` - Verificar sessão
 
-### Cadastro de Produtos
-![Cadastro](docs/images/cadastro.png)
+### **Produtos**
+- `GET /admin/api/produtos.php` - Listar produtos
+- `POST /admin/api/produtos.php` - Criar produto
+- `PUT /admin/api/produtos.php` - Atualizar produto
+- `DELETE /admin/api/produtos.php` - Excluir produto
 
-### Site Público
-![Frontend](docs/images/frontend.png)
+### **Categorias**
+- `GET /admin/api/categorias.php` - Listar categorias
+- `GET /admin/api/categorias.php?action=tree` - Árvore hierárquica
+- `POST /admin/api/categorias.php` - Criar categoria
+- `PUT /admin/api/categorias.php` - Atualizar categoria
 
-## 📊 Funcionalidades Detalhadas
+### **Cupons**
+- `GET /admin/api/cupons.php` - Listar cupons
+- `GET /admin/api/cupons.php?action=validar&codigo=XXX` - Validar cupom
+- `POST /admin/api/cupons.php` - Criar cupom
+- `PUT /admin/api/cupons.php` - Atualizar cupom
 
-### Sistema Administrativo
-- ✅ Dashboard com estatísticas em tempo real
-- ✅ Cadastro completo de produtos
-- ✅ Gerenciamento de variações (tamanho + cor)
-- ✅ Controle de estoque
-- ✅ Sistema de autenticação robusto
-- ✅ Diferentes níveis de permissão
-- ✅ Logs de atividades
-- ✅ Interface responsiva
+### **Relatórios**
+- `GET /admin/api/relatorios.php?action=dashboard` - Dashboard
+- `GET /admin/api/relatorios.php?action=detalhado` - Relatório detalhado
+- `GET /admin/api/relatorios.php?action=export` - Exportar dados
 
-### API REST
-- ✅ Endpoints para gerenciamento completo
-- ✅ Autenticação via sessão
-- ✅ Rate limiting
-- ✅ Documentação automática
-- ✅ Versionamento
-- ✅ CORS configurado
-- ✅ Tratamento de erros
+### **Frete**
+- `POST /admin/api/frete.php` - Calcular frete
+- `GET /admin/api/frete.php?action=consultar_cep` - Consultar CEP
+- `GET /admin/api/frete.php?action=rastrear` - Rastrear encomenda
 
-### Frontend Público
-- ✅ Carregamento dinâmico de produtos
-- ✅ Filtros por categoria
-- ✅ Produtos em destaque
-- ✅ Integração WhatsApp
-- ✅ SEO otimizado
-- ✅ Design responsivo
-- ✅ Performance otimizada
+## 📈 Métricas e Analytics
 
-## 🔧 Configurações Avançadas
+### **Dashboard Principal**
+- Vendas em tempo real
+- Receita total e ticket médio
+- Produtos mais vendidos
+- Performance por categoria
+- Análise de clientes
 
-### Backup Automático
+### **Relatórios Disponíveis**
+- Vendas por período
+- Performance de produtos
+- Análise de categorias
+- Efetividade de cupons
+- Relatório de frete
+- Análise de clientes
+
+### **Exportação**
+- CSV para Excel
+- Relatórios personalizados
+- Dados para BI
+- Backup de dados
+
+## 🔒 Segurança
+
+### **Autenticação**
+- Login seguro com hash
+- Sessões com timeout
+- Proteção CSRF
+- Rate limiting
+
+### **Dados**
+- Validação de entrada
+- Sanitização de dados
+- Prepared statements
+- Logs de auditoria
+
+### **Arquivos**
+- Upload seguro de imagens
+- Validação de tipos
+- Proteção contra malware
+- Quarentena automática
+
+## 🚀 Deploy e Produção
+
+### **Hospedagem Compartilhada**
+1. Upload via FTP/cPanel
+2. Importar banco via phpMyAdmin
+3. Configurar permissões
+4. Testar funcionalidades
+
+### **VPS/Servidor Dedicado**
+1. Configurar Apache/Nginx
+2. Instalar PHP e extensões
+3. Configurar MySQL
+4. SSL/TLS obrigatório
+5. Backup automático
+
+### **Docker** (Opcional)
 ```bash
-# Configurar cron job para backup diário
-0 2 * * * /caminho/para/scripts/backup-mysql.sh
+# Build da imagem
+docker build -t peluciapet:v2.1 .
+
+# Executar container
+docker run -d -p 80:80 peluciapet:v2.1
 ```
 
-### Otimização de Performance
-```php
-// Habilitar cache OPcache
-opcache.enable=1
-opcache.memory_consumption=128
-opcache.max_accelerated_files=4000
-```
+## 🔄 Backup e Manutenção
 
-### Monitoramento
+### **Backup Automático**
 ```bash
-# Verificar logs em tempo real
+# Executar script de backup
+./scripts/backup-mysql.sh
+
+# Agendar no crontab
+0 2 * * * /path/to/backup-mysql.sh
+```
+
+### **Monitoramento**
+- Logs de erro do PHP
+- Logs de acesso do Apache
+- Monitoramento de espaço
+- Verificação de integridade
+
+### **Atualizações**
+- Backup antes de atualizar
+- Testar em ambiente de desenvolvimento
+- Verificar compatibilidade
+- Documentar mudanças
+
+## 🆘 Suporte e Troubleshooting
+
+### **Problemas Comuns**
+
+**Erro de conexão com banco:**
+```bash
+# Verificar configurações
+php verificar-sistema.php
+
+# Testar conexão manual
+mysql -u usuario -p -h localhost peluciapet
+```
+
+**Upload de imagens não funciona:**
+```bash
+# Verificar permissões
+chmod 777 frontend/uploads/
+chown www-data:www-data frontend/uploads/
+```
+
+**Erro 500 no painel admin:**
+```bash
+# Verificar logs do PHP
 tail -f /var/log/apache2/error.log
-tail -f logs/peluciapet.log
+
+# Verificar .htaccess
+cat admin/.htaccess
 ```
 
-## 🛠️ Desenvolvimento
+### **Logs Importantes**
+- `/var/log/apache2/error.log` - Erros do servidor
+- `frontend/logs/sistema.log` - Logs do sistema
+- `admin/logs/auth.log` - Logs de autenticação
 
-### Ambiente de Desenvolvimento
-```bash
-# Configurar ambiente local
-git clone https://github.com/usuario/peluciapet.git
-cd peluciapet
-cp admin/config/config.example.php admin/config/config.php
-# Editar configurações locais
-```
+## 📞 Contato e Suporte
 
-### Contribuindo
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 📈 Roadmap
-
-### Versão 2.1 (Próxima)
-- [ ] Upload de imagens de produtos
-- [ ] Sistema de categorias avançado
-- [ ] Relatórios de vendas
-- [ ] Integração com correios
-- [ ] Sistema de cupons
-
-### Versão 2.2 (Futuro)
-- [ ] App mobile
-- [ ] Integração com marketplaces
-- [ ] Sistema de avaliações
-- [ ] Chat online
-- [ ] Multi-loja
-
-## 🐛 Problemas Conhecidos
-
-- Upload de imagens em desenvolvimento
-- Relatórios avançados pendentes
-- Integração com pagamentos futura
-
-## 📞 Suporte
-
-### Documentação
-- 📖 [Guia de Instalação](docs/INSTALACAO.md)
-- 🔧 [Manual do Usuário](docs/manual-usuario.md)
-- 🚀 [API Reference](docs/api-reference.md)
-
-### Contato
-- **Email:** contato@peluciapet.com.br
-- **WhatsApp:** +55 11 99999-9999
-- **Site:** https://peluciapet.com.br
+- **Email:** suporte@peluciapet.com.br
+- **WhatsApp:** (11) 99999-9999
+- **GitHub:** [Issues](https://github.com/digomontilha/peluciapet-sistema/issues)
+- **Documentação:** [Wiki](https://github.com/digomontilha/peluciapet-sistema/wiki)
 
 ## 📄 Licença
 
@@ -269,18 +405,14 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## 🙏 Agradecimentos
 
-- **Font Awesome** - Ícones incríveis
-- **Google Fonts** - Tipografia moderna
-- **Comunidade PHP** - Suporte e recursos
-- **Comunidade MySQL** - Banco de dados robusto
+- Equipe PelúciaPet pelo feedback constante
+- Comunidade PHP pela documentação
+- Desenvolvedores das bibliotecas utilizadas
+- Beta testers que ajudaram nos testes
 
 ---
 
-<div align="center">
+**Desenvolvido com ❤️ para a PelúciaPet**
 
-**🐾 Desenvolvido com ❤️ para o mundo pet 🐾**
-
-[⬆ Voltar ao topo](#-sistema-pelúciapet)
-
-</div>
+*Sistema PelúciaPet v2.1 - Transformando o cuidado pet em experiências digitais incríveis*
 
