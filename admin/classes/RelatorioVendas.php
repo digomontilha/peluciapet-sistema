@@ -14,7 +14,7 @@ class RelatorioVendas {
     /**
      * Dashboard principal com métricas gerais
      */
-    public function getDashboard($periodo = '30d') {
+    public function obterDashboard($periodo = '30d') {
         try {
             $dataInicio = $this->calcularDataInicio($periodo);
             $dataFim = date('Y-m-d 23:59:59');

@@ -64,7 +64,7 @@ function handleGet($relatorio) {
     switch ($action) {
         case 'dashboard':
             $periodo = $_GET['periodo'] ?? '30d';
-            $result = $relatorio->getDashboard($periodo);
+            $result = $relatorio->obterDashboard($periodo);
             break;
             
         case 'detalhado':
@@ -155,7 +155,7 @@ function handlePost($relatorio) {
     switch ($tipo) {
         case 'dashboard_personalizado':
             $periodo = $filtros['periodo'] ?? '30d';
-            $result = $relatorio->getDashboard($periodo);
+            $result = $relatorio->obterDashboard($periodo);
             break;
             
         case 'vendas_detalhado':
