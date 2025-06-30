@@ -1,0 +1,127 @@
+{
+  "name": "PelúciaPet - Caminhas e Roupinhas para Pets",
+  "short_name": "PelúciaPet",
+  "description": "Loja online especializada em caminhas e roupinhas para pets. Conforto e qualidade para seu melhor amigo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF6ED",
+  "theme_color": "#8B4513",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["shopping", "lifestyle", "pets"],
+  "icons": [
+    {
+      "src": "images/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "images/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "images/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "images/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "images/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "images/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "images/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "images/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Caminhas",
+      "short_name": "Caminhas",
+      "description": "Ver coleção de caminhas",
+      "url": "/index.html",
+      "icons": [
+        {
+          "src": "images/icons/shortcut-caminhas.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Roupinhas",
+      "short_name": "Roupinhas",
+      "description": "Ver coleção de roupinhas",
+      "url": "/roupinhas.html",
+      "icons": [
+        {
+          "src": "images/icons/shortcut-roupinhas.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contato",
+      "short_name": "Contato",
+      "description": "Entrar em contato",
+      "url": "/contato.html",
+      "icons": [
+        {
+          "src": "images/icons/shortcut-contato.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Página inicial no desktop"
+    },
+    {
+      "src": "images/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Página inicial no mobile"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}
+

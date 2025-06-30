@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - PelúciaPet</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .offline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #FDF6ED 0%, #EBC6A8 100%);
+        }
+        
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+        
+        .offline-title {
+            font-size: 2.5rem;
+            color: #5C2C0D;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .offline-message {
+            font-size: 1.2rem;
+            color: #A0522D;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        
+        .offline-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .retry-btn, .browse-offline-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .retry-btn {
+            background: #8B4513;
+            color: white;
+        }
+        
+        .retry-btn:hover {
+            background: #5C2C0D;
+            transform: translateY(-2px);
+        }
+        
+        .browse-offline-btn {
+            background: transparent;
+            color: #8B4513;
+            border: 2px solid #8B4513;
+        }
+        
+        .browse-offline-btn:hover {
+            background: #8B4513;
+            color: white;
+        }
+        
+        .offline-features {
+            margin-top: 3rem;
+            max-width: 600px;
+        }
+        
+        .offline-features h3 {
+            color: #5C2C0D;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .feature-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #D4A04C;
+        }
+        
+        .feature-item h4 {
+            color: #5C2C0D;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-item p {
+            color: #A0522D;
+            font-size: 0.9rem;
+        }
+        
+        .connection-status {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .connection-status.show {
+            transform: translateY(0);
+        }
+        
+        .connection-status.online {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .offline-title {
+                font-size: 2rem;
+            }
+            
+            .offline-message {
+                font-size: 1rem;
+            }
+            
+            .offline-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .retry-btn, .browse-offline-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="connection-status" id="connection-status"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="/images/logo-peluciapet.png" alt="PelúciaPet" class="logo">
+                </div>
+                <ul class="nav-list">
+                    <li><a href="/index.html">Caminhas</a></li>
+                    <li><a href="/roupinhas.html">Roupinhas</a></li>
+                    <li><a href="/como-comprar.html">Como Comprar</a></li>
+                    <li><a href="/contato.html">Contato</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="offline-container">
+            <svg class="offline-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#A0522D"/>
+                <path d="M1 1l22 22M8.5 8.5l7 7" stroke="#5C2C0D" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            
+            <h1 class="offline-title">Você está offline</h1>
+            
+            <p class="offline-message">
+                Não se preocupe! Você ainda pode navegar pelo conteúdo que já visitou. 
+                Quando sua conexão voltar, você terá acesso a todas as funcionalidades.
+            </p>
+            
+            <div class="offline-actions">
+                <button class="retry-btn" onclick="window.location.reload()">
+                    Tentar Novamente
+                </button>
+                <a href="/index.html" class="browse-offline-btn">
+                    Navegar Offline
+                </a>
+            </div>
+            
+            <div class="offline-features">
+                <h3>Disponível offline:</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>🛏️ Catálogo de Caminhas</h4>
+                        <p>Veja nossa coleção de caminhas confortáveis para pets</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>👕 Roupinhas para Pets</h4>
+                        <p>Explore nossa linha de roupas estilosas</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📞 Informações de Contato</h4>
+                        <p>Acesse nossos dados para contato via WhatsApp</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🛒 Como Comprar</h4>
+                        <p>Saiba como fazer seu pedido</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PelúciaPet</h3>
+                <p>Conforto e qualidade para seu melhor amigo</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>📱 WhatsApp: (11) 99999-9999</p>
+                <p>📧 Email: contato@peluciapet.com.br</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PelúciaPet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Detectar quando a conexão volta
+        window.addEventListener('online', function() {
+            const status = document.getElementById('connection-status');
+            status.textContent = 'Conexão restaurada! Recarregando...';
+            status.className = 'connection-status online show';
+            
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        });
+        
+        // Verificar se há páginas em cache
+        if ('caches' in window) {
+            caches.keys().then(cacheNames => {
+                if (cacheNames.length > 0) {
+                    console.log('Conteúdo offline disponível');
+                }
+            });
+        }
+        
+        // Menu mobile
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-list').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
+
